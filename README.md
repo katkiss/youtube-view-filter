@@ -44,6 +44,34 @@ The extension requires minimal permissions:
 - `activeTab`: To interact with YouTube pages
 - `storage`: To save your view threshold settings
 
+## Permission Justifications
+
+### Required Permissions
+
+#### `activeTab`
+This permission is required to:
+- Detect and read video view counts from the current YouTube page
+- Apply visual filters to videos that fall below the threshold
+- Ensure the extension only works when you're actively viewing YouTube
+
+We use this instead of broader permissions to maintain minimal access to your browsing activity.
+
+#### `storage`
+This permission is required to:
+- Save your preferred view count threshold
+- Persist your settings between browser sessions
+- Sync your preferences across devices when you're signed into Chrome
+
+### Host Permissions
+
+#### `*://*.youtube.com/*`
+This permission is required to:
+- Allow the extension to function only on YouTube domains
+- Monitor YouTube's dynamic content loading
+- Apply filters to YouTube video elements
+
+We specifically limit the extension to YouTube domains for security and privacy reasons.
+
 ## Development
 
 The extension consists of several key files:
