@@ -1,6 +1,6 @@
 # Privacy Policy for YouTube View Filter
 
-Last Updated: [Current Date]
+Last Updated: 12/28/2024
 
 ## Overview
 
@@ -66,7 +66,7 @@ We may update this Privacy Policy from time to time. We will notify users of any
 
 If you have questions about this Privacy Policy, please:
 - Open an issue on our GitHub repository
-- Contact us at [Your Contact Information]
+- Contact us at https://github.com/yogourt20
 
 ## Your Rights
 
