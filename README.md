@@ -17,6 +17,8 @@ A Chrome extension that helps you filter YouTube videos based on view count, all
 3. Enable "Developer mode" in the top right corner
 4. Click "Load unpacked" and select the extension directory
 
+Or just download from chrome
+[Download](https://chromewebstore.google.com/detail/youtube-view-filter/jnbddcablfaiiciijfogiglfbbpeopdf)
 ## Usage
 
 1. Click the extension icon in your Chrome toolbar
