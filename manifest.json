@@ -15,6 +15,9 @@
         "activeTab",
         "storage"
     ],
+    "host_permissions": [
+        "*://*.youtube.com/*"
+    ],
     "content_scripts": [
         {
             "matches": [
