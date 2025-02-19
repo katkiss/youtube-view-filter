@@ -4,7 +4,7 @@ A Chrome extension that helps you filter YouTube videos based on view count, all
 
 ## Features
 
-- 🎯 Filter videos based on minimum view count threshold
+- 🎯 Filter videos based on minimum and maximum view count thresholds
 - 🎨 Subtle visual indicators for filtered videos
 - ⚡ Real-time filtering as you browse
 - 🔄 Persistent settings across browser sessions
@@ -23,14 +23,13 @@ Or just download from chrome
 
 1. Click the extension icon in your Chrome toolbar
 2. Enter your desired minimum view count threshold
-3. Click "Save Settings" to apply the filter
-4. Browse YouTube normally - videos below your threshold will be automatically filtered
+3. Optionally set a maximum view count threshold
+4. Click "Save Settings" to apply the filter
+5. Browse YouTube normally - videos outside your thresholds will be automatically filtered
 
 The extension will:
-- Fade out videos below the threshold
+- Fade out videos below the minimum or above the maximum threshold
 - Add a grayscale effect to filtered videos
-- Display a small badge indicating low view count
-- Allow you to hover over filtered videos to preview them
 
 ## How It Works
 
@@ -39,6 +38,7 @@ The extension uses:
 - MutationObserver to handle YouTube's dynamic content loading
 - Custom CSS transitions for smooth visual effects
 - Intelligent view count parsing (supports K, M, B suffixes)
+- Dual threshold filtering for both minimum and maximum views
 
 ## Permissions
 
