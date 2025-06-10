@@ -184,6 +184,21 @@ async function hideNoViewVideos() {
         return;
     }
 
+      const skipUrls = [
+        "https://www.youtube.com/results?",
+        "https://www.youtube.com/feed/",
+        "https://www.youtube.com/playlist?",
+        "https://www.youtube.com/@",
+      ];
+
+      const currentUrl = location.href;
+
+      for (const url of skipUrls) {
+        if (currentUrl.includes(url)) {
+          return;
+        }
+      }
+
     try {
         const videoItems = getAllVideoItems();
         console.log('Processing video items:', videoItems.length);
