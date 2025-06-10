@@ -74,18 +74,19 @@ function getViewCountElement(videoItem) {
 
     for (const selector of selectors) {
         const elements = actualVideoItem.querySelectorAll(selector);
-
+        
         for (const element of elements) {
             // Check text content
             const text = element.textContent.trim();
-            if (text.toLowerCase().includes('view') && /\d/.test(text)) {
+            if (text.toLowerCase().includes('watching') || text.toLowerCase().includes('view') && /\d/.test(text)) {
                 return element;
             }
 
             // Check aria-label
             const ariaLabel = element.getAttribute('aria-label');
-            if (ariaLabel && ariaLabel.toLowerCase().includes('view') && /\d/.test(ariaLabel)) {
-                return element;
+            if ((ariaLabel && text.toLowerCase().includes('watching')) ||
+                (ariaLabel.toLowerCase().includes('view') && /\d/.test(ariaLabel))) {
+                    return element;
             }
         }
     }
@@ -96,9 +97,11 @@ function getViewCountElement(videoItem) {
         const text = element.textContent.trim();
         const ariaLabel = element.getAttribute('aria-label');
 
-        if ((text && text.toLowerCase().includes('view') && /\d/.test(text)) ||
-            (ariaLabel && ariaLabel.toLowerCase().includes('view') && /\d/.test(ariaLabel))) {
-            return element;
+        if ((text &&
+            text.toLowerCase().includes('watching')) ||(text.toLowerCase().includes('view') && /\d/.test(text)) ||
+            (ariaLabel &&
+            ariaLabel.toLowerCase().includes('watching') || ariaLabel.toLowerCase().includes('view') && /\d/.test(ariaLabel))) {
+                return element;
         }
     }
 
@@ -155,6 +158,7 @@ function parseViewCount(viewText) {
     // Regular view count format
     viewText = viewText.toLowerCase()
         .replace(/views?/gi, '')
+        .replace(/watching/gi, '')
         .replace(/[•|,]/g, '')
         .replace(/\s+/g, '')
         .trim();
@@ -165,7 +169,7 @@ function parseViewCount(viewText) {
         'b': 1000000000
     };
 
-    const match = viewText.match(/^([\d.]+)([kmb])?$/i);
+    const match = viewText.match(/([\d.]+)([kmb])?/i);
     if (!match) return 0;
 
     let [_, number, suffix] = match;
@@ -185,10 +189,10 @@ async function hideNoViewVideos() {
     }
 
       const skipUrls = [
-        "https://www.youtube.com/results?",
-        "https://www.youtube.com/feed/",
-        "https://www.youtube.com/playlist?",
-        "https://www.youtube.com/@",
+        'https://www.youtube.com/results?',
+        'https://www.youtube.com/feed/',
+        'https://www.youtube.com/playlist?',
+        'https://www.youtube.com/@',
       ];
 
       const currentUrl = location.href;
